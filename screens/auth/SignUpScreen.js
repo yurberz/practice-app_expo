@@ -45,8 +45,8 @@ const SignUpScreen = ({ navigation }) => {
       username !== "" &&
       password !== "" &&
       emailErr === "" &&
-      usernameErr !== "" &&
-      passErr !== ""
+      usernameErr === "" &&
+      passErr === ""
     );
   };
 
