@@ -1,10 +1,22 @@
 import React from "react";
 
-import { StyleSheet, Text, View } from "react-native";
+import {} from "react-native";
 
-import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
+
+import {
+  OnBoardingScreen,
+  SignInScreen,
+  SignUpScreen,
+  ForgotPasswordScreen,
+  OtpScreen,
+} from "./screens";
+
+const AuthStack = createNativeStackNavigator();
 
 const App = () => {
   const [isReady] = useFonts({
@@ -19,20 +31,24 @@ const App = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <AuthStack.Navigator
+        screenOptions={{
+          headerShown: false,
+          initialRouteName: "OnBoarding",
+        }}
+      >
+        <AuthStack.Screen name="OnBoarding" component={OnBoardingScreen} />
+        <AuthStack.Screen name="SignIn" component={SignInScreen} />
+        <AuthStack.Screen name="SignUp" component={SignUpScreen} />
+        <AuthStack.Screen
+          name="ForgotPassword"
+          component={ForgotPasswordScreen}
+        />
+        <AuthStack.Screen name="Otp" component={OtpScreen} />
+      </AuthStack.Navigator>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default App;
