@@ -11,6 +11,7 @@ import {
 } from "react-native";
 
 import { constants, images, COLORS, FONTS, SIZES } from "../../constants";
+
 import { Dots, TextButton } from "../../components";
 
 const OnBoardingScreen = ({ navigation }) => {
